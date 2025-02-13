@@ -136,5 +136,5 @@ def recipe2(request):
             ],
             "link": "/recipe/2"
         }
-
+    return render(request, "ledger/recipe2.html",ctx)
 
