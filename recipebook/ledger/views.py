@@ -99,7 +99,7 @@ def recipe1(request):
             ],
             "link": "/recipe/1"
     }
-    return render(request, "ledger/recipe1.html",ctx)
+    return render(request, "ledger/recipeMerge.html",ctx)
 
 def recipe2(request):
     ctx = {
@@ -136,5 +136,5 @@ def recipe2(request):
             ],
             "link": "/recipe/2"
         }
-    return render(request, "ledger/recipe2.html",ctx)
+    return render(request, "ledger/recipeMerge.html",ctx)
 
