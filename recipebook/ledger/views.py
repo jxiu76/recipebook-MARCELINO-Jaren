@@ -3,12 +3,23 @@ from django.http import HttpResponse
 
 from .models import Recipe
 
+from django.views.generic.list import ListView
+from django.views.generic.detail import DetailView
+
+class RecipeListView(ListView):
+    model = Recipe
+    template_name = 'ledger/recipes.html'
+
+class RecipeDetailView(DetailView):
+    model = Recipe
+    template_name = 'ledger/recipeMerge.html'
+
 def index(request):
     return HttpResponse("")
 
-def recipes(request):
-    recipe_list = Recipe.objects.all()
-    ctx = {"recipes" : recipe_list}
+def recipe_list(request):
+    recipes = Recipe.objects.all()
+    ctx = {"recipes" : recipes}
     return render(request, "ledger/recipes.html", ctx)
     
 def recipe_detail(request, pk):

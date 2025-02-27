@@ -5,7 +5,7 @@
 <h2>{{ recipe.name }}</h2>
 
 <ul>
-    {% for ingredient in recipe.recipeingredient_set.all %}
+    {% for ingredient in recipe.ingredients.all %}
     <li>
         {{ ingredient.ingredient.name }} - {{ ingredient.quantity }}
     </li>
