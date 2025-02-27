@@ -5,9 +5,12 @@ Recipe Book
 {% endblock %}
 
 {% block content %}
-<h1> Recipe Book </h1>
-    <ul>
-        <li><a href="/recipe/1">Recipe 1</a></li>
-        <li><a href="/recipe/2">Recipe 2</a></li>
-    </ul>
+<h1>Recipe Book</h1>
+
+<ul>
+    {% for recipe in recipes %}
+        <li><a href="{% url 'recipe-detail' recipe.id %}">{{ recipe.name }}</a></li>
+    {% endfor %}
+</ul>
+
 {% endblock %}

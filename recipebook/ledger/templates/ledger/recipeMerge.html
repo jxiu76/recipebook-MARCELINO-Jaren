@@ -1,18 +1,15 @@
 {% block content %}
 
-<h1> 
-    Recipe Book
-</h1>
+<h1>Recipe Book</h1>
 
-<ul> 
-    <a href="{{ link }}"> {{ name }} </a>
-</ul>
+<h2>{{ recipe.name }}</h2>
 
-<ul> 
-    {% for crop in ingredients %}
-    <li> 
-        {{crop.name}} - {{ crop.quantity }}
+<ul>
+    {% for ingredient in recipe.recipeingredient_set.all %}
+    <li>
+        {{ ingredient.ingredient.name }} - {{ ingredient.quantity }}
     </li>
     {% endfor %}
 </ul>
+
 {% endblock %}
