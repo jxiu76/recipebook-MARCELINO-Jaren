@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 
+{% load static %}
+
 {% block title %}
 Recipe Book
 {% endblock %}
@@ -9,7 +11,7 @@ Recipe Book
 
 <ul>
     {% for recipe in object_list %}
-        <li><a href="{{ recipe.get_abosulute_url }}">{{ recipe.name }}</a></li>
+        <li><a href="{{ recipe.get_absolute_url }}"> {{ recipe.name }} </a></li>
     {% endfor %}
 </ul>
 
