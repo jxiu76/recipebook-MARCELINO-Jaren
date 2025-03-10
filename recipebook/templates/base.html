@@ -16,7 +16,9 @@
                     <button type="submit">Logout</button>
                 </form>
             {% else %}
-                <a href="{% url 'login' %}">Login</a>
+                <form action="{% url 'login' %}" method="get">
+                    <button type="submit">Login</button>
+                </form>
             {% endif %}
         </nav>
     </header>
