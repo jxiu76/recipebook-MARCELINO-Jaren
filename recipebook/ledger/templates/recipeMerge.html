@@ -1,12 +1,13 @@
-{% extends 'base.html' %}
-
 {% load static %}
 
 {% block content %}
 
+{% if user.is_authenticated %}
+
 <h1>Recipe Book</h1>
 
 <h2>{{ recipe.name }}</h2>
+<p><strong>Author:</strong> {{ recipe.author.username }}</p>
 
 <ul>
     {% for ingredient in recipe.ingredients.all %}
@@ -15,5 +16,9 @@
     </li>
     {% endfor %}
 </ul>
+
+{% else %}
+    <p>You must be logged in to view this recipe.</p>
+{% endif %}
 
 {% endblock %}
