@@ -7,7 +7,8 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ("ledger", "0002_recipe_author_recipe_created_on_recipe_updated_on_and_more"),
+        ("ledger",
+         "0002_recipe_author_recipe_created_on_recipe_updated_on_and_more"),
     ]
 
     operations = [
