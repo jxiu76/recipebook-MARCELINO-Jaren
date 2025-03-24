@@ -30,7 +30,7 @@
         {% endif %}
 
         <p><a href="{% url 'ledger:recipe-add-image' recipe.pk %}">Upload New Image</a></p>
-
+        <p><a href="{% url 'ledger:recipe-list' %}">Back to Recipe List</a></p>
     {% else %}
         <p>You must be logged in to view this recipe.</p>
     {% endif %}
