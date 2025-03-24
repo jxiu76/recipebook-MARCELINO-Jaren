@@ -2,27 +2,36 @@
 {% load static %}
 
 {% block content %}
+    {% if user.is_authenticated %}
+        <h2>{{ recipe.name }}</h2>
+        <p><strong>Author:</strong> {{ recipe.author }}</p>
+        <p><strong>Created on:</strong> {{ recipe.created_on|date:"F d, Y H:i" }}</p>
+        <p><strong>Last updated:</strong> {{ recipe.updated_on|date:"F d, Y H:i" }}</p>
 
-{% if user.is_authenticated %}
+        <h3>Ingredients:</h3>
+        <ul>
+            {% for ingredient in recipe.ingredients.all %}
+                <li>{{ ingredient.ingredient.name }} - {{ ingredient.quantity }}</li>
+            {% empty %}
+                <li>No ingredients added.</li>
+            {% endfor %}
+        </ul>
 
-    <h2>{{ recipe.name }}</h2>
-    <p><strong>Author:</strong> {{ recipe.author }}</p>
-    <p><strong>Created on:</strong> {{ recipe.created_on|date:"F d, Y H:i" }}</p>
-    <p><strong>Last updated:</strong> {{ recipe.updated_on|date:"F d, Y H:i" }}</p>
+        <h3>Images:</h3>
+        {% if recipe.images.all %}
+            <div class="recipe-images">
+                {% for image in recipe.images.all %}
+                    <img src="{{ image.image.url }}" alt="{{ image.description }}">
+                    <p>{{ image.description }}</p>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p>No images available for this recipe.</p>
+        {% endif %}
 
-    <h3>Ingredients:</h3>
-    <ul>
-        {% for ingredient in recipe.ingredients.all %}
-            <li>
-                {{ ingredient.ingredient.name }} - {{ ingredient.quantity }}
-            </li>
-        {% empty %}
-            <li>No ingredients added.</li>
-        {% endfor %}
-    </ul>
+        <p><a href="{% url 'ledger:recipe-add-image' recipe.pk %}">Upload New Image</a></p>
 
-{% else %}
-    <p>You must be logged in to view this recipe.</p>
-{% endif %}
-
+    {% else %}
+        <p>You must be logged in to view this recipe.</p>
+    {% endif %}
 {% endblock %}

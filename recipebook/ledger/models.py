@@ -38,10 +38,8 @@ class RecipeIngredient(models.Model):
 
 
 class RecipeImage(models.Model):
-    recipe = models.ForeignKey(
-        Recipe, on_delete=models.CASCADE, related_name="images"
-    )
-    image = models.ImageField(upload_to="recipe_images/", null=False, blank=False)
+    recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE, related_name="images")
+    image = models.ImageField(upload_to="images/", null=True)
     description = models.CharField(max_length=255, blank=True)
 
     def __str__(self):

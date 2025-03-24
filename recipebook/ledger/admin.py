@@ -9,7 +9,9 @@ class RecipeIngredientInline(admin.TabularInline):
     extra = 1
 
 
-class RecipeImageInline(admin.TabularInline):  # Allows adding images inside Recipe admin
+class RecipeImageInline(
+    admin.TabularInline
+):  # Allows adding images inside Recipe admin
     model = RecipeImage
     extra = 1  # Show one empty form for new images
 
